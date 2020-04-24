@@ -1,7 +1,6 @@
 package com.lambdaschool.javacountries;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CountryList {
 
@@ -211,27 +210,31 @@ public class CountryList {
         countryList.add(new Country("Seychelles",95702,460,36));
     }
 
-    public String[] getNames() {
+    public Country[] getByName() {
         return countryList.stream()
-            .map(country -> country.getName())
-            .sorted()
-            .toArray(size -> new String[size]);
+            .sorted((a, b) -> a.getName().compareToIgnoreCase(b.getName()))
+            .toArray(size -> new Country[size]);
     }
 
-    public String[] getNamesByFirstLetter(String letter) {
+    public Country[] getByNameStartsWith(String letter) {
         return countryList.stream()
-            .map(country -> country.getName())
-            .filter(name -> name.startsWith(letter.toUpperCase()))
-            .sorted()
-            .toArray(size -> new String[size]);
+            .filter(country -> country.getName().startsWith(letter.toUpperCase()))
+            .sorted((a, b) -> a.getName().compareToIgnoreCase(b.getName()))
+            .toArray(size -> new Country[size]);
     }
 
-    public String[] getNamesByMinLength(int length) {
+    public Country[] getByMinNameLength(int length) {
         return countryList.stream()
-            .map(country -> country.getName())
-            .filter(name -> name.length() >= length)
-            .sorted()
-            .toArray(size -> new String[size]);
+            .filter(country -> country.getName().length() >= length)
+            .sorted((a, b) -> a.getName().compareToIgnoreCase(b.getName()))
+            .toArray(size -> new Country[size]);
+    }
+
+    public Country[] getByMinPopulationSize(long people) {
+        return countryList.stream()
+            .filter(country -> country.getPopulation() >= people)
+            .sorted((a, b) -> (int)(b.getPopulation() - a.getPopulation()))
+            .toArray(size -> new Country[size]);
     }
 
 }

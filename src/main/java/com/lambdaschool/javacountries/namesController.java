@@ -14,17 +14,17 @@ public class namesController {
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllNames() {
-        return new ResponseEntity<>(JavaCountriesApplication.countryList.getNames(), HttpStatus.OK);
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getByName(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/start/{letter}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getNamesByFirstLetter(@PathVariable String letter) {
-        return new ResponseEntity<>(JavaCountriesApplication.countryList.getNamesByFirstLetter(letter), HttpStatus.OK);
+    public ResponseEntity<?> getByNameStartsWith(@PathVariable String letter) {
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getByNameStartsWith(letter), HttpStatus.OK);
     }
 
     @GetMapping(value = "/size/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getNamesByFirstLetter(@PathVariable int number) {
-        return new ResponseEntity<>(JavaCountriesApplication.countryList.getNamesByMinLength(number), HttpStatus.OK);
+    public ResponseEntity<?> getByMinNameLength(@PathVariable int number) {
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getByMinNameLength(number), HttpStatus.OK);
     }
 
 }
