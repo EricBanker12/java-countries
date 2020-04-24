@@ -1,6 +1,7 @@
 package com.lambdaschool.javacountries;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CountryList {
 
@@ -208,6 +209,18 @@ public class CountryList {
         countryList.add(new Country("U.S. Virgin Islands",104909,350,42));
         countryList.add(new Country("Antigua and Barbuda",104084,440,32));
         countryList.add(new Country("Seychelles",95702,460,36));
+    }
+
+    public String[] getNames() {
+        String[] namesArray = new String[countryList.size()];
+
+        for (int i = 0; i < countryList.size(); i++) {
+            namesArray[i] = countryList.get(i).getName();
+        }
+
+        Arrays.sort(namesArray);
+
+        return namesArray;
     }
 
 }
