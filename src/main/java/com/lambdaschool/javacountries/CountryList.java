@@ -248,4 +248,20 @@ public class CountryList {
             .max((a, b) -> (int)(a.getPopulation() - b.getPopulation()));
     }
 
+    public Country[] getByMinMedianAge(int age) {
+        return countryList.stream()
+            .filter(country -> country.getMedianAge() >= age)
+            .toArray(size -> new Country[size]);
+    }
+
+    public Optional<Country> getMinMedianAge() {
+        return countryList.stream()
+            .min((a, b) -> a.getMedianAge() - b.getMedianAge());
+    }
+
+    public Optional<Country> getMaxMedianAge() {
+        return countryList.stream()
+            .max((a, b) -> a.getMedianAge() - b.getMedianAge());
+    }
+
 }
