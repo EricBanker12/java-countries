@@ -27,4 +27,9 @@ public class populationController {
         return new ResponseEntity<>(JavaCountriesApplication.countryList.getMaxPopulation(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/median", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getMedianPopulation() {
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getMedianPopulation(), HttpStatus.OK);
+    }
+
 }

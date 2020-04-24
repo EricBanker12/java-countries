@@ -18,13 +18,18 @@ public class ageController {
     }
 
     @GetMapping(value = "/min", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getMinPopulation() {
+    public ResponseEntity<?> getMinMedianAge() {
         return new ResponseEntity<>(JavaCountriesApplication.countryList.getMinMedianAge(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/max", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getMaxPopulation() {
+    public ResponseEntity<?> getMaxMedianAge() {
         return new ResponseEntity<>(JavaCountriesApplication.countryList.getMaxMedianAge(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/median", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getMedianMedianAge() {
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getMedianMedianAge(), HttpStatus.OK);
     }
 
 }
