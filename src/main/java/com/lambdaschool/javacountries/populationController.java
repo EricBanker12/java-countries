@@ -17,4 +17,14 @@ public class populationController {
         return new ResponseEntity<>(JavaCountriesApplication.countryList.getByMinPopulationSize(people), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/size/min", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getMinPopulation() {
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getMinPopulation(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/size/max", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getMaxPopulation() {
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getMaxPopulation(), HttpStatus.OK);
+    }
+
 }

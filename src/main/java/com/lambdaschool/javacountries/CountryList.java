@@ -1,6 +1,7 @@
 package com.lambdaschool.javacountries;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CountryList {
 
@@ -235,6 +236,16 @@ public class CountryList {
             .filter(country -> country.getPopulation() >= people)
             .sorted((a, b) -> (int)(b.getPopulation() - a.getPopulation()))
             .toArray(size -> new Country[size]);
+    }
+
+    public Optional<Country> getMinPopulation() {
+        return countryList.stream()
+            .min((a, b) -> (int)(a.getPopulation() - b.getPopulation()));
+    }
+
+    public Optional<Country> getMaxPopulation() {
+        return countryList.stream()
+            .max((a, b) -> (int)(a.getPopulation() - b.getPopulation()));
     }
 
 }
