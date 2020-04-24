@@ -212,15 +212,26 @@ public class CountryList {
     }
 
     public String[] getNames() {
-        String[] namesArray = new String[countryList.size()];
+        return countryList.stream()
+            .map(country -> country.getName())
+            .sorted()
+            .toArray(size -> new String[size]);
+    }
 
-        for (int i = 0; i < countryList.size(); i++) {
-            namesArray[i] = countryList.get(i).getName();
-        }
+    public String[] getNamesByFirstLetter(String letter) {
+        return countryList.stream()
+            .map(country -> country.getName())
+            .filter(name -> name.startsWith(letter.toUpperCase()))
+            .sorted()
+            .toArray(size -> new String[size]);
+    }
 
-        Arrays.sort(namesArray);
-
-        return namesArray;
+    public String[] getNamesByMinLength(int length) {
+        return countryList.stream()
+            .map(country -> country.getName())
+            .filter(name -> name.length() >= length)
+            .sorted()
+            .toArray(size -> new String[size]);
     }
 
 }
